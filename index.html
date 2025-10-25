@@ -5,14 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Literacy Academy</title>
     <link rel="stylesheet" href="style.css">
+    <script src="auth-check.js"></script>
 </head>
 <body>
     
     <div class="container">
         <!-- Header Section -->
         <header>
-            <h1>🎓 AI Literacy Academy</h1>
-            <p class="tagline">Master AI in 15 Minutes</p>
+            <div class="header-content">
+                <div>
+                    <h1>🎓 AI Literacy Academy</h1>
+                    <p class="tagline">Master AI in 15 Minutes</p>
+                </div>
+                <div class="user-controls">
+                    <span id="welcomeMessage" class="welcome-text"></span>
+                    <button class="logout-button" onclick="authUtils.logout()">Logout</button>
+                </div>
+            </div>
         </header>
 
         <!-- Hero Section -->

@@ -12,4 +12,11 @@ function goToLesson(lessonNumber) {
 // Add a nice welcome message
 window.addEventListener('load', function() {
     console.log('🎓 AI Literacy Academy loaded successfully!');
+    
+    // Display welcome message with username
+    const username = authUtils.getCurrentUsername();
+    const welcomeElement = document.getElementById('welcomeMessage');
+    if (welcomeElement) {
+        welcomeElement.textContent = `Welcome back, ${username}! 👋`;
+    }
 });

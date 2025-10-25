@@ -63,10 +63,54 @@ body {
 header {
     background: var(--primary-blue);
     color: var(--white);
-    text-align: center;
     padding: 60px 20px;
     position: relative;
     overflow: hidden;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.user-controls {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.welcome-text {
+    font-size: 1.1em;
+    font-weight: 500;
+    opacity: 0.95;
+}
+
+.logout-button {
+    background: rgba(255, 255, 255, 0.2);
+    color: var(--white);
+    border: 2px solid var(--white);
+    padding: 10px 24px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.95em;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.2s ease;
+}
+
+.logout-button:hover {
+    background: var(--white);
+    color: var(--primary-blue);
+    transform: translateY(-2px);
+}
+
+.logout-button:active {
+    transform: translateY(0);
 }
 
 header::before {
@@ -100,6 +144,7 @@ header h1 {
     margin-bottom: 12px;
     animation: slideInDown 0.6s ease;
     letter-spacing: -0.5px;
+    text-align: left;
 }
 
 @keyframes slideInDown {
@@ -118,6 +163,7 @@ header h1 {
     font-weight: 500;
     opacity: 0.95;
     animation: slideInUp 0.6s ease 0.2s both;
+    text-align: left;
 }
 
 @keyframes slideInUp {
@@ -401,6 +447,25 @@ footer p {
 
     header h1 {
         font-size: 2.5em;
+        text-align: center;
+    }
+
+    .tagline {
+        text-align: center;
+    }
+
+    .header-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .user-controls {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .logout-button {
+        width: 100%;
     }
 
     .hero h2 {
