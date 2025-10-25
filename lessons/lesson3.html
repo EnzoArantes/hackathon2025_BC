@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 3: Think Critically</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="lesson-style.css">
+</head>
+<body>
+
+    <div class="lesson-container">
+        <!-- Progress Bar -->
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressBar"></div>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="lesson-nav">
+            <a href="../index.html" class="back-button">← Back to Home</a>
+            <span class="lesson-badge">Lesson 3 of 4</span>
+        </nav>
+
+        <!-- Lesson Content -->
+        <main class="lesson-content">
+
+            <!-- Section 1: Introduction -->
+            <section id="section1" class="section active">
+                <div class="section-inner">
+                    <h1>🔍 Think Critically</h1>
+                    <p class="intro-text">
+                        AI is powerful, but it's not perfect. It can make mistakes, "hallucinate" facts,
+                        and give outdated information. Learning to verify and question AI responses is crucial!
+                    </p>
+
+                    <div class="key-principle">
+                        <h3>💡 Key Principle</h3>
+                        <p>Always verify important information. AI is a helpful tool, but you're the one responsible for checking if the output is accurate and appropriate.</p>
+                    </div>
+
+                    <button class="next-button" onclick="goToSection(2)">
+                        Learn How →
+                    </button>
+                </div>
+            </section>
+
+            <!-- Section 2: Types of AI Mistakes -->
+            <section id="section2" class="section">
+                <div class="section-inner">
+                    <h2>Common AI Mistakes to Watch For</h2>
+                    <p class="subtitle">Understanding what can go wrong helps you catch errors before they cause problems</p>
+
+                    <div class="mistakes-grid">
+                        <div class="mistake-card">
+                            <div class="mistake-icon">🎭</div>
+                            <h3>Hallucinations</h3>
+                            <p>AI makes up facts, dates, or sources that sound real but aren't.</p>
+                            <div class="example-box bad">
+                                <strong>Example:</strong> Citing a research paper that doesn't exist, or claiming a historical event happened on the wrong date.
+                            </div>
+                            <div class="verification-tip">
+                                <strong>How to Check:</strong> Cross-reference with reliable sources, look up citations, verify dates and names.
+                            </div>
+                        </div>
+
+                        <div class="mistake-card">
+                            <div class="mistake-icon">📅</div>
+                            <h3>Outdated Information</h3>
+                            <p>AI training data has a cutoff date - it doesn't know recent events.</p>
+                            <div class="example-box bad">
+                                <strong>Example:</strong> Information about current events, latest software versions, or recent policy changes may be incorrect.
+                            </div>
+                            <div class="verification-tip">
+                                <strong>How to Check:</strong> For time-sensitive info, always verify with current sources or official websites.
+                            </div>
+                        </div>
+
+                        <div class="mistake-card">
+                            <div class="mistake-icon">⚖️</div>
+                            <h3>Biased Responses</h3>
+                            <p>AI can reflect biases from its training data or make oversimplified generalizations.</p>
+                            <div class="example-box bad">
+                                <strong>Example:</strong> Stereotypical assumptions about professions, cultures, or situations.
+                            </div>
+                            <div class="verification-tip">
+                                <strong>How to Check:</strong> Question generalizations, seek diverse perspectives, be aware of potential bias.
+                            </div>
+                        </div>
+
+                        <div class="mistake-card">
+                            <div class="mistake-icon">🧮</div>
+                            <h3>Math & Logic Errors</h3>
+                            <p>AI can make calculation mistakes or logical inconsistencies.</p>
+                            <div class="example-box bad">
+                                <strong>Example:</strong> Incorrect calculations, flawed reasoning, or contradictory statements within the same response.
+                            </div>
+                            <div class="verification-tip">
+                                <strong>How to Check:</strong> Double-check calculations, verify logic step by step, use specialized tools for complex math.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="critical-thinking-framework">
+                        <h3>🎯 Your Critical Thinking Checklist</h3>
+                        <div class="checklist-box">
+                            <ul class="verification-list">
+                                <li><strong>Is it specific?</strong> Vague responses might indicate the AI doesn't really know.</li>
+                                <li><strong>Can I verify it?</strong> Check facts against trusted sources.</li>
+                                <li><strong>Does it make sense?</strong> Use your own knowledge and common sense.</li>
+                                <li><strong>Is it current?</strong> For time-sensitive info, confirm it's up to date.</li>
+                                <li><strong>What's missing?</strong> Consider what perspectives or information might be left out.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <button class="next-button" onclick="goToSection(3)">
+                        Practice Spotting Errors →
+                    </button>
+                </div>
+            </section>
+
+            <!-- Section 3: Interactive Exercise -->
+            <section id="section3" class="section">
+                <div class="section-inner">
+                    <h2>🎮 Your Turn: Spot the Red Flags</h2>
+
+                    <div class="challenge-box">
+                        <div class="scenario-box">
+                            <h3>📖 Scenario:</h3>
+                            <p>You asked AI: "Tell me about the health benefits of vitamin C"</p>
+
+                            <div class="ai-response-box">
+                                <h4>AI Response:</h4>
+                                <div class="fake-ai-response">
+                                    <p>"Vitamin C is essential for immune function and is found in citrus fruits. A 2023 study by Dr. Johnson at Harvard Medical School proved that taking 5000mg of vitamin C daily can cure the common cold completely. Vitamin C also prevents all types of cancer according to research. Everyone should take maximum doses for optimal health. There are no side effects at any dosage level."</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="task-box">
+                            <h3>Your Task:</h3>
+                            <p>This response contains several red flags and potential errors. Identify at least 3 problems with this AI response and explain how you would verify the correct information.</p>
+                            <div class="hint-box">
+                                <strong>Hint:</strong> Look for claims that sound too absolute, unverifiable citations, potential medical misinformation, or overly simplistic statements.
+                            </div>
+                        </div>
+
+                        <textarea
+                            id="userPrompt"
+                            class="prompt-input"
+                            placeholder="List the red flags you spotted and how you'd verify the facts...&#10;&#10;Example format:&#10;&#10;Red Flag 1: [What's wrong]&#10;How to verify: [What you'd do to check]&#10;&#10;Red Flag 2: [What's wrong]&#10;How to verify: [What you'd do to check]"
+                            rows="10"
+                        ></textarea>
+
+                        <button class="check-button" onclick="checkPrompt()">
+                            Check My Answer ✓
+                        </button>
+
+                        <div id="feedback" class="feedback-box" style="display: none;"></div>
+                    </div>
+
+                    <button id="continueButton" class="next-button" onclick="goToSection(4)" style="display: none;">
+                        Continue to Summary →
+                    </button>
+                </div>
+            </section>
+
+            <!-- Section 4: Summary & Next Steps -->
+            <section id="section4" class="section">
+                <div class="section-inner">
+                    <h2>🎉 Lesson Complete!</h2>
+
+                    <div class="completion-badge">
+                        <div class="badge-icon">✓</div>
+                        <p>You've mastered Critical Thinking!</p>
+                    </div>
+
+                    <div class="summary-box">
+                        <h3>What You Learned:</h3>
+                        <ul class="checklist">
+                            <li>✅ Four common types of AI mistakes: hallucinations, outdated info, bias, and logic errors</li>
+                            <li>✅ How to verify AI responses using reliable sources</li>
+                            <li>✅ A critical thinking checklist for evaluating AI output</li>
+                            <li>✅ Red flags that indicate information needs verification</li>
+                        </ul>
+                    </div>
+
+                    <div class="pro-tip-box">
+                        <h3>💎 Pro Tip:</h3>
+                        <p>Use AI as your starting point, not your endpoint. For important decisions (health, legal, financial, academic integrity), always verify with experts or authoritative sources. AI is excellent for brainstorming and drafts, but critical thinking is YOUR responsibility!</p>
+                    </div>
+
+                    <div class="next-lesson-preview">
+                        <h3>🔜 Next Lesson: Use AI Ethically</h3>
+                        <p>Learn about privacy, plagiarism, and responsible AI practices</p>
+                    </div>
+
+                    <div class="button-group">
+                        <a href="lesson4.html" class="next-button primary">
+                            Next Lesson: Ethical AI Use →
+                        </a>
+                        <a href="../index.html" class="next-button secondary">
+                            ← Back to Home
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script src="lesson3.js"></script>
+</body>
+</html>
