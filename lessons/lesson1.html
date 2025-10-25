@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 1: Prompt Fundamentals</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="lesson-style.css">
+</head>
+<body>
+    
+    <div class="lesson-container">
+        <!-- Progress Bar -->
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressBar"></div>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="lesson-nav">
+            <a href="../index.html" class="back-button">← Back to Home</a>
+            <span class="lesson-badge">Lesson 1 of 4</span>
+        </nav>
+
+        <!-- Lesson Content -->
+        <main class="lesson-content">
+            
+            <!-- Section 1: Introduction -->
+            <section id="section1" class="section active">
+                <div class="section-inner">
+                    <h1>🎯 Prompt Fundamentals</h1>
+                    <p class="intro-text">
+                        Think of AI like a really talented assistant who's eager to help but needs clear instructions. 
+                        The better your instructions (prompts), the better the results!
+                    </p>
+
+                    <div class="key-principle">
+                        <h3>💡 Key Principle</h3>
+                        <p>Specific prompts = Better results. Always include <strong>WHO</strong>, <strong>WHAT</strong>, and <strong>HOW</strong>.</p>
+                    </div>
+
+                    <button class="next-button" onclick="goToSection(2)">
+                        Start Learning →
+                    </button>
+                </div>
+            </section>
+
+            <!-- Section 2: The Three Elements -->
+            <section id="section2" class="section">
+                <div class="section-inner">
+                    <h2>The Three Elements of Great Prompts</h2>
+                    <p class="subtitle">Master these and you'll get 10x better results from any AI</p>
+
+                    <div class="elements-grid">
+                        <div class="element-card">
+                            <div class="element-icon">👤</div>
+                            <h3>WHO - Define the Role</h3>
+                            <p>Tell the AI what perspective or expertise to use.</p>
+                            <div class="example-box good">
+                                <strong>Example:</strong> "You are an experienced college advisor..."
+                            </div>
+                        </div>
+
+                        <div class="element-card">
+                            <div class="element-icon">📋</div>
+                            <h3>WHAT - State Your Goal</h3>
+                            <p>Be crystal clear about what you need.</p>
+                            <div class="example-box good">
+                                <strong>Example:</strong> "...help me write a resume that highlights my coding skills..."
+                            </div>
+                        </div>
+
+                        <div class="element-card">
+                            <div class="element-icon">⚙️</div>
+                            <h3>HOW - Specify Format</h3>
+                            <p>Describe exactly how you want the output.</p>
+                            <div class="example-box good">
+                                <strong>Example:</strong> "...format it with bullet points, keep each under 15 words"
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="full-example">
+                        <h4>✨ Putting It All Together:</h4>
+                        <div class="prompt-display">
+                            "You are an experienced college advisor. Help me write a resume that highlights my coding skills. Format it with bullet points, keep each under 15 words."
+                        </div>
+                    </div>
+
+                    <button class="next-button" onclick="goToSection(3)">
+                        Try an Exercise →
+                    </button>
+                </div>
+            </section>
+
+            <!-- Section 3: Interactive Exercise -->
+            <section id="section3" class="section">
+                <div class="section-inner">
+                    <h2>🎮 Your Turn: Fix This Prompt</h2>
+                    
+                    <div class="challenge-box">
+                        <div class="bad-prompt-display">
+                            <h3>❌ Vague Prompt:</h3>
+                            <p class="bad-prompt">"Help me with my essay"</p>
+                            <p class="explanation">This is too vague! The AI doesn't know what kind of help, what essay, or how to format the response.</p>
+                        </div>
+
+                        <div class="task-box">
+                            <h3>Your Task:</h3>
+                            <p>Rewrite this prompt using WHO, WHAT, and HOW. Make it specific!</p>
+                        </div>
+
+                        <textarea 
+                            id="userPrompt" 
+                            class="prompt-input" 
+                            placeholder="Type your improved prompt here...&#10;&#10;Hint: Start with 'You are...' and include specific details about the essay topic and what kind of help you need."
+                            rows="6"
+                        ></textarea>
+
+                        <button class="check-button" onclick="checkPrompt()">
+                            Check My Answer ✓
+                        </button>
+
+                        <div id="feedback" class="feedback-box" style="display: none;"></div>
+                    </div>
+
+                    <button id="continueButton" class="next-button" onclick="goToSection(4)" style="display: none;">
+                        Continue to Summary →
+                    </button>
+                </div>
+            </section>
+
+            <!-- Section 4: Summary & Next Steps -->
+            <section id="section4" class="section">
+                <div class="section-inner">
+                    <h2>🎉 Lesson Complete!</h2>
+                    
+                    <div class="completion-badge">
+                        <div class="badge-icon">✓</div>
+                        <p>You've mastered Prompt Fundamentals</p>
+                    </div>
+
+                    <div class="summary-box">
+                        <h3>What You Learned:</h3>
+                        <ul class="checklist">
+                            <li>✅ How to structure prompts with WHO, WHAT, and HOW</li>
+                            <li>✅ Why specificity leads to better AI results</li>
+                            <li>✅ How to transform vague requests into clear instructions</li>
+                        </ul>
+                    </div>
+
+                    <div class="next-lesson-preview">
+                        <h3>🔜 Next Lesson: Adding Context</h3>
+                        <p>Learn how providing background information dramatically improves AI responses</p>
+                    </div>
+
+                    <div class="button-group">
+                        <a href="lesson2.html" class="next-button primary">
+                            Next Lesson: Context is Key →
+                        </a>
+                        <a href="../index.html" class="next-button secondary">
+                            ← Back to Home
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script src="lesson1.js"></script>
+</body>
+</html>
