@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Literacy Academy</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div class="container">
+        <!-- Header Section -->
+        <header>
+            <h1>🎓 AI Literacy Academy</h1>
+            <p class="tagline">Master AI in 15 Minutes</p>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <h2>Learn How to Use AI Like a Pro</h2>
+            <p>Interactive lessons that teach you proper prompting, critical thinking, and responsible AI use.</p>
+            <button class="cta-button" onclick="startCourse()">Start Learning Free →</button>
+        </section>
+
+        <!-- Course Modules -->
+        <section class="modules">
+            <h3>What You'll Learn</h3>
+            
+            <div class="module-grid">
+                <div class="module-card">
+                    <div class="module-icon">🎯</div>
+                    <h4>Prompt Fundamentals</h4>
+                    <p>Learn how to write clear, effective prompts that get you better results.</p>
+                    <button onclick="goToLesson(1)">Start →</button>
+                </div>
+
+                <div class="module-card">
+                    <div class="module-icon">📝</div>
+                    <h4>Adding Context</h4>
+                    <p>Discover why context matters and how to provide it effectively.</p>
+                    <button onclick="goToLesson(2)">Start →</button>
+                </div>
+
+                <div class="module-card">
+                    <div class="module-icon">🔍</div>
+                    <h4>Think Critically</h4>
+                    <p>Learn to spot AI mistakes and verify information properly.</p>
+                    <button onclick="goToLesson(3)">Start →</button>
+                </div>
+
+                <div class="module-card">
+                    <div class="module-icon">⚖️</div>
+                    <h4>Use AI Ethically</h4>
+                    <p>Understand privacy, plagiarism, and responsible AI practices.</p>
+                    <button onclick="goToLesson(4)">Start →</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Demo Section -->
+        <section class="demo">
+            <h3>Try It: See the Difference</h3>
+            <div class="comparison">
+                <div class="bad-example">
+                    <h4>❌ Vague Prompt</h4>
+                    <div class="prompt-box">
+                        "Tell me about dogs"
+                    </div>
+                    <p>Too broad - AI doesn't know what you want</p>
+                </div>
+
+                <div class="good-example">
+                    <h4>✅ Specific Prompt</h4>
+                    <div class="prompt-box">
+                        "List 3 dog breeds good for apartments with their exercise needs"
+                    </div>
+                    <p>Clear goal with specific requirements</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>Built at BC Horizons Hackathon 2025</p>
+            <p>Empowering responsible AI use 🚀</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

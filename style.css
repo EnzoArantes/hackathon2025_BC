@@ -1,0 +1,416 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+    animation: gradientShift 15s ease infinite;
+    background-size: 200% 200%;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    overflow: hidden;
+    animation: fadeInUp 0.8s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Header */
+header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-align: center;
+    padding: 50px 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+header::before {
+    content: '✨';
+    position: absolute;
+    font-size: 100px;
+    opacity: 0.1;
+    top: -20px;
+    right: 50px;
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+}
+
+header h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    animation: slideInLeft 0.8s ease;
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.tagline {
+    font-size: 1.4em;
+    opacity: 0.95;
+    animation: slideInRight 0.8s ease;
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 80px 20px;
+    background: linear-gradient(180deg, #f8f9ff 0%, #ffffff 100%);
+    position: relative;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #667eea, #764ba2, #667eea);
+    background-size: 200% 100%;
+    animation: shimmer 3s linear infinite;
+}
+
+@keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+.hero h2 {
+    font-size: 3em;
+    color: #333;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero p {
+    font-size: 1.3em;
+    color: #666;
+    margin-bottom: 40px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+}
+
+.cta-button {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 20px 50px;
+    font-size: 1.3em;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.4s ease;
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255,255,255,0.2);
+    transition: left 0.5s ease;
+}
+
+.cta-button:hover::before {
+    left: 100%;
+}
+
+.cta-button:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 15px 40px rgba(102, 126, 234, 0.5);
+}
+
+.cta-button:active {
+    transform: translateY(-1px) scale(1.02);
+}
+
+/* Modules Section */
+.modules {
+    padding: 80px 40px;
+    background: white;
+}
+
+.modules h3 {
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 50px;
+    color: #333;
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.modules h3::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 4px;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    border-radius: 2px;
+}
+
+.module-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+}
+
+.module-card {
+    background: white;
+    border: 2px solid #e0e0e0;
+    border-radius: 20px;
+    padding: 35px;
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+}
+
+.module-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.module-card:hover::before {
+    opacity: 1;
+}
+
+.module-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(102, 126, 234, 0.2);
+    border-color: #667eea;
+}
+
+.module-icon {
+    font-size: 4em;
+    margin-bottom: 20px;
+    display: inline-block;
+    transition: transform 0.4s ease;
+}
+
+.module-card:hover .module-icon {
+    transform: scale(1.2) rotate(5deg);
+}
+
+.module-card h4 {
+    font-size: 1.4em;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.module-card p {
+    color: #666;
+    margin-bottom: 25px;
+    line-height: 1.7;
+}
+
+.module-card button {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1em;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.module-card button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+/* Demo Section */
+.demo {
+    padding: 80px 40px;
+    background: linear-gradient(180deg, #ffffff 0%, #f8f9ff 100%);
+}
+
+.demo h3 {
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 50px;
+    color: #333;
+}
+
+.comparison {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.bad-example, .good-example {
+    padding: 35px;
+    border-radius: 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.bad-example {
+    background: linear-gradient(135deg, #ffe0e0 0%, #ffcccc 100%);
+    border: 3px solid #ff6b6b;
+}
+
+.good-example {
+    background: linear-gradient(135deg, #e0ffe0 0%, #ccffcc 100%);
+    border: 3px solid #51cf66;
+}
+
+.bad-example:hover, .good-example:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.bad-example h4 {
+    color: #c92a2a;
+    margin-bottom: 20px;
+    font-size: 1.4em;
+}
+
+.good-example h4 {
+    color: #2b8a3e;
+    margin-bottom: 20px;
+    font-size: 1.4em;
+}
+
+.prompt-box {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    margin: 20px 0;
+    font-family: 'Courier New', monospace;
+    color: #333;
+    font-size: 1em;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    line-height: 1.6;
+}
+
+/* Footer */
+footer {
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    color: white;
+    text-align: center;
+    padding: 40px;
+}
+
+footer p {
+    margin: 8px 0;
+    opacity: 0.9;
+    font-size: 1.1em;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .comparison {
+        grid-template-columns: 1fr;
+    }
+    
+    header h1 {
+        font-size: 2.2em;
+    }
+    
+    .hero h2 {
+        font-size: 2em;
+    }
+    
+    .module-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .hero {
+        padding: 50px 20px;
+    }
+    
+    .modules, .demo {
+        padding: 50px 20px;
+    }
+}
+
+/* Add smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Selection color */
+::selection {
+    background: #667eea;
+    color: white;
+}
