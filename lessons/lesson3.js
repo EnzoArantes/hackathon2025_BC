@@ -21,8 +21,30 @@ function goToSection(sectionNum) {
     currentSection = sectionNum;
     updateProgress();
 
+    // If moving to section 4 (completion), mark lesson as complete
+    if (sectionNum === 4) {
+        markLessonComplete();
+    }
+
     // Scroll to top smoothly
     window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Mark lesson as complete and send to backend
+async function markLessonComplete() {
+    const lessonId = 3; // Lesson 3
+    const score = 100; // Completed
+    
+    console.log('Marking lesson 3 as complete...');
+    
+    if (window.authUtils && window.authUtils.updateProgress) {
+        const success = await window.authUtils.updateProgress(lessonId, score);
+        if (success) {
+            console.log('✓ Lesson 3 progress saved!');
+        } else {
+            console.log('⚠ Failed to save progress');
+        }
+    }
 }
 
 // Check the user's response for identifying red flags
