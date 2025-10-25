@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 2: Context is Key</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="lesson-style.css">
+</head>
+<body>
+    
+    <div class="lesson-container">
+        <!-- Progress Bar -->
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressBar"></div>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="lesson-nav">
+            <a href="../index.html" class="back-button">← Back to Home</a>
+            <span class="lesson-badge">Lesson 2 of 4</span>
+        </nav>
+
+        <!-- Lesson Content -->
+        <main class="lesson-content">
+            
+            <!-- Section 1: Introduction -->
+            <section id="section1" class="section active">
+                <div class="section-inner">
+                    <h1>📝 Context is Key</h1>
+                    <p class="intro-text">
+                        Imagine asking a friend for restaurant recommendations without mentioning you're vegetarian, 
+                        on a budget, or that you're in Tokyo. Context changes everything!
+                    </p>
+
+                    <div class="key-principle">
+                        <h3>💡 Key Principle</h3>
+                        <p>AI can't read your mind. The more relevant background information you provide, the more tailored and useful the response will be.</p>
+                    </div>
+
+                    <button class="next-button" onclick="goToSection(2)">
+                        See Examples →
+                    </button>
+                </div>
+            </section>
+
+            <!-- Section 2: Before & After Examples -->
+<section id="section2" class="section">
+    <div class="section-inner">
+        <h2>The Power of Context</h2>
+        <p class="subtitle">Watch how adding context transforms generic advice into personalized help</p>
+
+        <!-- Example 1: Without Context -->
+        <div class="example-container">
+            <h3 class="example-title bad-title">❌ Without Context</h3>
+            <div class="example-content">
+                <div class="prompt-display-large bad">
+                    "Give me tips for learning to code"
+                </div>
+                <div class="response-preview">
+                    <div class="response-label">AI Response:</div>
+                    <p>Here are some general tips: Start with Python, practice daily, build projects, use online tutorials, join coding communities...</p>
+                    <div class="quality-badge bad-badge">
+                        <span class="badge-icon">⚠️</span>
+                        <span>Generic advice that might not fit your situation</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Spacer -->
+        <div class="vs-divider">
+            <span>VS</span>
+        </div>
+
+        <!-- Example 2: With Context -->
+        <div class="example-container">
+            <h3 class="example-title good-title">✅ With Context</h3>
+            <div class="example-content">
+                <div class="prompt-display-large good">
+                    "I'm a biology major interested in data analysis for research. I have no coding experience but can dedicate 2 hours per week to learning. Give me tips for learning to code that fit my background and time constraints."
+                </div>
+                <div class="response-preview">
+                    <div class="response-label">AI Response:</div>
+                    <p>Perfect! Focus on Python and R since they're ideal for biological data analysis. Start with DataCamp's biology-focused intro courses which work well with a 2hr/week schedule. Practice with real genomic or ecological datasets from Kaggle to stay motivated...</p>
+                    <div class="quality-badge good-badge">
+                        <span class="badge-icon">✓</span>
+                        <span>Personalized, actionable advice tailored to you</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Key Takeaway Box -->
+        <div class="takeaway-box">
+            <h3>🎯 The Difference?</h3>
+            <p>The second prompt included <strong>who you are</strong> (biology major), <strong>your goal</strong> (data analysis), and <strong>your constraints</strong> (2hrs/week, no experience). This gave the AI everything it needed to give you relevant advice.</p>
+        </div>
+
+        <!-- Context Types Section - Cleaner Layout -->
+        <div class="context-section">
+            <h3>What Kind of Context Should You Include?</h3>
+            
+            <div class="context-list">
+                <div class="context-item">
+                    <div class="context-header">
+                        <span class="context-icon">👤</span>
+                        <h4>Your Background</h4>
+                    </div>
+                    <p>Your skills, experience level, field of study, or current role</p>
+                    <div class="context-example">
+                        <em>Example: "I'm a junior majoring in psychology..."</em>
+                    </div>
+                </div>
+
+                <div class="context-item">
+                    <div class="context-header">
+                        <span class="context-icon">🎯</span>
+                        <h4>Your Goal</h4>
+                    </div>
+                    <p>What you want to achieve and why it matters to you</p>
+                    <div class="context-example">
+                        <em>Example: "...looking to apply for grad school in neuroscience"</em>
+                    </div>
+                </div>
+
+                <div class="context-item">
+                    <div class="context-header">
+                        <span class="context-icon">⏰</span>
+                        <h4>Your Constraints</h4>
+                    </div>
+                    <p>Time, budget, resources, or limitations you're working with</p>
+                    <div class="context-example">
+                        <em>Example: "...have 6 months and a $500 budget"</em>
+                    </div>
+                </div>
+
+                <div class="context-item">
+                    <div class="context-header">
+                        <span class="context-icon">📍</span>
+                        <h4>Your Situation</h4>
+                    </div>
+                    <p>Current circumstances, challenges, or specific needs</p>
+                    <div class="context-example">
+                        <em>Example: "...struggling with statistics courses"</em>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button class="next-button" onclick="goToSection(3)">
+            Practice Adding Context →
+        </button>
+    </div>
+</section>
+
+            <!-- Section 3: Interactive Exercise -->
+            <section id="section3" class="section">
+                <div class="section-inner">
+                    <h2>🎮 Your Turn: Add Context</h2>
+                    
+                    <div class="challenge-box">
+                        <div class="scenario-box">
+                            <h3>📖 Scenario:</h3>
+                            <p>You want AI to help you prepare for a job interview.</p>
+                            
+                            <div class="bad-prompt-display">
+                                <h4>❌ Basic Prompt (No Context):</h4>
+                                <p class="bad-prompt">"Help me prepare for a job interview"</p>
+                            </div>
+                        </div>
+
+                        <div class="task-box">
+                            <h3>Your Task:</h3>
+                            <p>Rewrite this prompt by adding context about:</p>
+                            <ul class="task-list">
+                                <li>✓ What job/role you're interviewing for</li>
+                                <li>✓ Your relevant background or experience</li>
+                                <li>✓ What specifically concerns you about the interview</li>
+                                <li>✓ When the interview is (timeline)</li>
+                            </ul>
+                        </div>
+
+                        <textarea 
+                            id="userPrompt" 
+                            class="prompt-input" 
+                            placeholder="Rewrite the prompt here with lots of context...&#10;&#10;Example start: 'I'm interviewing for a software engineering internship at a startup. I'm a sophomore computer science student with one Python project...'&#10;&#10;Keep going - add more details!"
+                            rows="8"
+                        ></textarea>
+
+                        <button class="check-button" onclick="checkPrompt()">
+                            Check My Answer ✓
+                        </button>
+
+                        <div id="feedback" class="feedback-box" style="display: none;"></div>
+                    </div>
+
+                    <button id="continueButton" class="next-button" onclick="goToSection(4)" style="display: none;">
+                        Continue to Summary →
+                    </button>
+                </div>
+            </section>
+
+            <!-- Section 4: Summary & Next Steps -->
+            <section id="section4" class="section">
+                <div class="section-inner">
+                    <h2>🎉 Lesson Complete!</h2>
+                    
+                    <div class="completion-badge">
+                        <div class="badge-icon">✓</div>
+                        <p>You've mastered Context!</p>
+                    </div>
+
+                    <div class="summary-box">
+                        <h3>What You Learned:</h3>
+                        <ul class="checklist">
+                            <li>✅ Why context transforms generic responses into personalized advice</li>
+                            <li>✅ Four types of context to include: background, goals, constraints, situation</li>
+                            <li>✅ How to enrich prompts with relevant details</li>
+                        </ul>
+                    </div>
+
+                    <div class="pro-tip-box">
+                        <h3>💎 Pro Tip:</h3>
+                        <p>The best prompts combine Lesson 1 (WHO, WHAT, HOW) with Lesson 2 (Context). Try it: "You are a career coach [WHO]. I'm a junior majoring in marketing with one internship [CONTEXT]. Help me write a cover letter for a social media manager role [WHAT]. Format it as three paragraphs [HOW]."</p>
+                    </div>
+
+                    <div class="next-lesson-preview">
+                        <h3>🔜 Next Lesson: Critical Thinking</h3>
+                        <p>Learn how to spot AI mistakes, hallucinations, and verify information</p>
+                    </div>
+
+                    <div class="button-group">
+                        <a href="lesson3.html" class="next-button primary">
+                            Next Lesson: Think Critically →
+                        </a>
+                        <a href="../index.html" class="next-button secondary">
+                            ← Back to Home
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script src="lesson2.js"></script>
+</body>
+</html>
