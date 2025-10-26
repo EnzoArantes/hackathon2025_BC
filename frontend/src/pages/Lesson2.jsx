@@ -276,7 +276,7 @@ function Lesson2() {
                       ))}
                     </ul>
                     {feedback.example && (
-                      <div style={{ marginTop: '20px', padding: '20px', background: 'white', borderRadius: '10px' }}>
+                      <div style={{ marginTop: '20px', padding: '20px', background: 'white', borderRadius: '10px', color: '#1E293B' }}>
                         <strong>Perfect example with rich context:</strong><br /><br />
                         <em>{feedback.example}</em>
                       </div>
