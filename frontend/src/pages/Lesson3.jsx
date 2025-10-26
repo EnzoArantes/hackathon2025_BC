@@ -269,7 +269,6 @@ function Lesson3() {
 
               <div className="completion-badge">
                 <div className="badge-icon">✓</div>
-                <p>You've mastered Critical Thinking!</p>
               </div>
 
               <div className="summary-box">

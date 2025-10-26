@@ -300,7 +300,6 @@ function Lesson2() {
 
               <div className="completion-badge">
                 <div className="badge-icon">✓</div>
-                <p>You've mastered Context!</p>
               </div>
 
               <div className="summary-box">
