@@ -224,7 +224,6 @@ function Lesson1() {
 
               <div className="completion-badge">
                 <div className="badge-icon">✓</div>
-                <p>You've mastered Prompt Fundamentals</p>
               </div>
 
               <div className="summary-box">
