@@ -1,0 +1,225 @@
+/* Lesson Card Styles - Locked/Unlocked/Completed States */
+
+/* Locked State */
+.module-card.locked {
+  opacity: 0.6;
+  filter: grayscale(70%);
+  cursor: not-allowed !important;
+  position: relative;
+  border-color: var(--gray-200);
+}
+
+.module-card.locked:hover {
+  transform: translateY(0) !important;
+  box-shadow: var(--shadow-sm) !important;
+  border-color: var(--gray-200) !important;
+}
+
+.module-card.locked .module-icon {
+  opacity: 0.5;
+}
+
+.module-card.locked:hover .module-icon {
+  transform: none !important;
+}
+
+/* Lock Overlay */
+.lock-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  pointer-events: none;
+}
+
+.lock-icon {
+  font-size: 4em;
+  opacity: 0.8;
+  animation: lockShake 0.5s ease;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+}
+
+@keyframes lockShake {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-10deg);
+  }
+  75% {
+    transform: rotate(10deg);
+  }
+}
+
+/* Completed State */
+.module-card.completed {
+  border-color: var(--primary-green);
+  background: linear-gradient(135deg, #f0fff4 0%, #ffffff 100%);
+  position: relative;
+}
+
+.module-card.completed:hover {
+  border-color: var(--primary-green);
+  box-shadow: 0 8px 24px rgba(88, 204, 2, 0.2);
+}
+
+/* Completion Badge */
+.completion-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  width: 48px;
+  height: 48px;
+  background: var(--primary-green);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(88, 204, 2, 0.4);
+  z-index: 10;
+  animation: badgePop 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes badgePop {
+  0% {
+    transform: scale(0) rotate(-180deg);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+.checkmark {
+  color: white;
+  font-size: 1.8em;
+  font-weight: 800;
+  line-height: 1;
+}
+
+/* Review Button */
+.module-card.completed button.review-button {
+  background: var(--primary-green);
+  box-shadow: 0 4px 0 #46A302;
+}
+
+.module-card.completed button.review-button:hover {
+  background: #5FD604;
+  box-shadow: 0 6px 0 #46A302;
+}
+
+.module-card.completed button.review-button:active {
+  box-shadow: 0 2px 0 #46A302;
+}
+
+/* Locked Button */
+.module-card button:disabled {
+  background: var(--gray-200);
+  color: var(--gray-700);
+  cursor: not-allowed;
+  box-shadow: 0 4px 0 #999;
+  opacity: 0.8;
+}
+
+.module-card button:disabled:hover {
+  transform: none;
+  background: var(--gray-200);
+}
+
+.module-card button:disabled:active {
+  transform: none;
+}
+
+/* Tooltip hint */
+.module-card.locked::before {
+  content: attr(title);
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--gray-900);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 0.85em;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 100;
+}
+
+.module-card.locked:hover::before {
+  opacity: 0.95;
+}
+
+.module-card.locked::after {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid var(--gray-900);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 100;
+}
+
+.module-card.locked:hover::after {
+  opacity: 0.95;
+}
+
+/* Unlocked State (default) */
+.module-card:not(.locked):not(.completed) {
+  border-color: var(--gray-100);
+}
+
+.module-card:not(.locked):not(.completed):hover {
+  border-color: var(--primary-blue);
+}
+
+/* Smooth transitions */
+.module-card {
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.module-card .module-icon {
+  transition: all 0.3s ease;
+}
+
+.module-card button {
+  transition: all 0.2s ease;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .completion-badge {
+    width: 40px;
+    height: 40px;
+    top: -6px;
+    right: -6px;
+  }
+
+  .checkmark {
+    font-size: 1.5em;
+  }
+
+  .lock-icon {
+    font-size: 3em;
+  }
+
+  .module-card.locked::before {
+    display: none; /* Hide tooltip on mobile */
+  }
+
+  .module-card.locked::after {
+    display: none;
+  }
+}

@@ -1,17 +1,50 @@
 import { useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
+import ProgressBar from '../components/ProgressBar';
+import LessonCard from '../components/LessonCard';
+import { useProgress } from '../contexts/ProgressContext';
 import '../styles/style.css';
 
 function Home() {
   const navigate = useNavigate();
+  const { getNextLesson } = useProgress();
 
   const startCourse = () => {
-    navigate('/lesson/1');
+    const nextLesson = getNextLesson();
+    if (nextLesson) {
+      navigate(`/lesson/${nextLesson}`);
+    } else {
+      // All lessons completed, go to lesson 1
+      navigate('/lesson/1');
+    }
   };
 
-  const goToLesson = (lessonNumber) => {
-    navigate(`/lesson/${lessonNumber}`);
-  };
+  const lessons = [
+    {
+      id: 1,
+      icon: '🎯',
+      title: 'Prompt Fundamentals',
+      description: 'Learn how to write clear, effective prompts that get you better results.'
+    },
+    {
+      id: 2,
+      icon: '📝',
+      title: 'Adding Context',
+      description: 'Discover why context matters and how to provide it effectively.'
+    },
+    {
+      id: 3,
+      icon: '🔍',
+      title: 'Think Critically',
+      description: 'Learn to spot AI mistakes and verify information properly.'
+    },
+    {
+      id: 4,
+      icon: '⚖️',
+      title: 'Use AI Ethically',
+      description: 'Understand privacy, plagiarism, and responsible AI practices.'
+    }
+  ];
 
   return (
     <div className="container">
@@ -24,38 +57,25 @@ function Home() {
         <button className="cta-button" onClick={startCourse}>Start Learning Free →</button>
       </section>
 
+      {/* Progress Section */}
+      <section className="progress-section">
+        <ProgressBar />
+      </section>
+
       {/* Course Modules */}
       <section className="modules">
         <h3>What You'll Learn</h3>
 
         <div className="module-grid">
-          <div className="module-card">
-            <div className="module-icon">🎯</div>
-            <h4>Prompt Fundamentals</h4>
-            <p>Learn how to write clear, effective prompts that get you better results.</p>
-            <button onClick={() => goToLesson(1)}>Start →</button>
-          </div>
-
-          <div className="module-card">
-            <div className="module-icon">📝</div>
-            <h4>Adding Context</h4>
-            <p>Discover why context matters and how to provide it effectively.</p>
-            <button onClick={() => goToLesson(2)}>Start →</button>
-          </div>
-
-          <div className="module-card">
-            <div className="module-icon">🔍</div>
-            <h4>Think Critically</h4>
-            <p>Learn to spot AI mistakes and verify information properly.</p>
-            <button onClick={() => goToLesson(3)}>Start →</button>
-          </div>
-
-          <div className="module-card">
-            <div className="module-icon">⚖️</div>
-            <h4>Use AI Ethically</h4>
-            <p>Understand privacy, plagiarism, and responsible AI practices.</p>
-            <button onClick={() => goToLesson(4)}>Start →</button>
-          </div>
+          {lessons.map(lesson => (
+            <LessonCard
+              key={lesson.id}
+              lessonNumber={lesson.id}
+              icon={lesson.icon}
+              title={lesson.title}
+              description={lesson.description}
+            />
+          ))}
         </div>
       </section>
 
