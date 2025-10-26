@@ -238,7 +238,7 @@ function Lesson3() {
                       ))}
                     </ul>
                     {feedback.type === 'success' && (
-                      <div style={{ marginTop: '20px', padding: '20px', background: 'white', borderRadius: '10px' }}>
+                      <div style={{ marginTop: '20px', padding: '20px', background: 'white', borderRadius: '10px', color: '#1E293B' }}>
                         <strong>The main red flags in that response were:</strong><br /><br />
                         <ol style={{ textAlign: 'left', lineHeight: '1.8' }}>
                           <li><strong>Fake citation:</strong> The "2023 Harvard study by Dr. Johnson" is unverifiable and likely made up.</li>

@@ -244,7 +244,7 @@ function Lesson4() {
                       ))}
                     </ul>
                     {feedback.type === 'success' && (
-                      <div style={{ marginTop: '20px', padding: '20px', background: 'white', borderRadius: '10px' }}>
+                      <div style={{ marginTop: '20px', padding: '20px', background: 'white', borderRadius: '10px', color: '#1E293B' }}>
                         <strong>Key Ethical Issues:</strong><br /><br />
                         <strong>Scenario 1 (Plagiarism):</strong> Submitting AI work as your own violates academic integrity. Risk: failing grade, academic probation. Better: Use AI for brainstorming, write in your own words, cite AI assistance.<br /><br />
                         <strong>Scenario 2 (Privacy):</strong> Sharing sensitive medical and personal data with AI. Risk: data breaches, privacy violations. Better: Use generic descriptions without names, dates, policy numbers.<br /><br />
