@@ -1,25 +1,20 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import LessonLayout from '../components/LessonLayout';
-import { updateProgress } from '../utils/api';
+import { useProgress } from '../contexts/ProgressContext';
 
 function Lesson4() {
   const [userResponse, setUserResponse] = useState('');
   const [feedback, setFeedback] = useState(null);
   const [showContinue, setShowContinue] = useState(false);
   const navigate = useNavigate();
+  const { markLessonComplete } = useProgress();
 
-  const markLessonComplete = async () => {
+  const handleLessonComplete = async () => {
     const lessonId = 4;
-    const score = 100;
-
     console.log('Marking lesson 4 as complete...');
-    const success = await updateProgress(lessonId, score);
-    if (success) {
-      console.log('✓ Lesson 4 progress saved!');
-    } else {
-      console.log('⚠ Failed to save progress');
-    }
+    await markLessonComplete(lessonId);
+    console.log('✓ Lesson 4 completed!');
   };
 
   const checkPrompt = () => {
@@ -96,7 +91,7 @@ function Lesson4() {
     <LessonLayout
       lessonNumber={4}
       totalSections={4}
-      onComplete={markLessonComplete}
+      onComplete={handleLessonComplete}
     >
       {({ currentSection, goToSection }) => (
         <>
