@@ -1,225 +1,305 @@
-/* Lesson Card Styles - Locked/Unlocked/Completed States */
+/* ═══════════════════════════════════════════════════════════ */
+/*   LESSON CARD STATES - Glassmorphism Design                  */
+/*   Locked | Unlocked | Completed                              */
+/* ═══════════════════════════════════════════════════════════ */
 
-/* Locked State */
+/* ═══════════════════════════════════════════════════════════ */
+/*   LOCKED STATE                                                */
+/* ═══════════════════════════════════════════════════════════ */
+
 .module-card.locked {
-  opacity: 0.6;
-  filter: grayscale(70%);
-  cursor: not-allowed !important;
-  position: relative;
-  border-color: var(--gray-200);
+    opacity: 0.5;
+    filter: grayscale(100%) blur(0.5px);
+    cursor: not-allowed !important;
+    position: relative;
+    border-color: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.02);
 }
 
 .module-card.locked:hover {
-  transform: translateY(0) !important;
-  box-shadow: var(--shadow-sm) !important;
-  border-color: var(--gray-200) !important;
-}
-
-.module-card.locked .module-icon {
-  opacity: 0.5;
-}
-
-.module-card.locked:hover .module-icon {
-  transform: none !important;
-}
-
-/* Lock Overlay */
-.lock-overlay {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 10;
-  pointer-events: none;
-}
-
-.lock-icon {
-  font-size: 4em;
-  opacity: 0.8;
-  animation: lockShake 0.5s ease;
-  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
-}
-
-@keyframes lockShake {
-  0%, 100% {
-    transform: rotate(0deg);
-  }
-  25% {
-    transform: rotate(-10deg);
-  }
-  75% {
-    transform: rotate(10deg);
-  }
-}
-
-/* Completed State */
-.module-card.completed {
-  border-color: var(--primary-green);
-  background: linear-gradient(135deg, #f0fff4 0%, #ffffff 100%);
-  position: relative;
-}
-
-.module-card.completed:hover {
-  border-color: var(--primary-green);
-  box-shadow: 0 8px 24px rgba(88, 204, 2, 0.2);
-}
-
-/* Completion Badge */
-.completion-badge {
-  position: absolute;
-  top: -8px;
-  right: -8px;
-  width: 48px;
-  height: 48px;
-  background: var(--primary-green);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 12px rgba(88, 204, 2, 0.4);
-  z-index: 10;
-  animation: badgePop 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-}
-
-@keyframes badgePop {
-  0% {
-    transform: scale(0) rotate(-180deg);
-    opacity: 0;
-  }
-  100% {
-    transform: scale(1) rotate(0deg);
-    opacity: 1;
-  }
-}
-
-.checkmark {
-  color: white;
-  font-size: 1.8em;
-  font-weight: 800;
-  line-height: 1;
-}
-
-/* Review Button */
-.module-card.completed button.review-button {
-  background: var(--primary-green);
-  box-shadow: 0 4px 0 #46A302;
-}
-
-.module-card.completed button.review-button:hover {
-  background: #5FD604;
-  box-shadow: 0 6px 0 #46A302;
-}
-
-.module-card.completed button.review-button:active {
-  box-shadow: 0 2px 0 #46A302;
-}
-
-/* Locked Button */
-.module-card button:disabled {
-  background: var(--gray-200);
-  color: var(--gray-700);
-  cursor: not-allowed;
-  box-shadow: 0 4px 0 #999;
-  opacity: 0.8;
-}
-
-.module-card button:disabled:hover {
-  transform: none;
-  background: var(--gray-200);
-}
-
-.module-card button:disabled:active {
-  transform: none;
-}
-
-/* Tooltip hint */
-.module-card.locked::before {
-  content: attr(title);
-  position: absolute;
-  top: -40px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--gray-900);
-  color: white;
-  padding: 8px 16px;
-  border-radius: 8px;
-  font-size: 0.85em;
-  white-space: nowrap;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-  z-index: 100;
+    transform: translateY(0) !important;
+    box-shadow: var(--shadow-dark) !important;
+    border-color: rgba(255, 255, 255, 0.05) !important;
+    background: rgba(255, 255, 255, 0.02) !important;
 }
 
 .module-card.locked:hover::before {
-  opacity: 0.95;
+    opacity: 0 !important;
 }
 
+.module-card.locked .module-icon {
+    opacity: 0.4;
+    filter: grayscale(100%) drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+}
+
+.module-card.locked:hover .module-icon {
+    transform: none !important;
+    filter: grayscale(100%) drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3)) !important;
+}
+
+/* Lock Overlay Icon */
+.lock-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    pointer-events: none;
+}
+
+.lock-icon {
+    font-size: 4rem;
+    opacity: 0.6;
+    animation: lockPulse 2s ease-in-out infinite;
+    filter: drop-shadow(0 4px 16px rgba(255, 255, 255, 0.2));
+}
+
+@keyframes lockPulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.6;
+    }
+    50% {
+        transform: scale(1.05);
+        opacity: 0.8;
+    }
+}
+
+/* Tooltip */
 .module-card.locked::after {
-  content: '';
-  position: absolute;
-  top: -8px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 0;
-  height: 0;
-  border-left: 8px solid transparent;
-  border-right: 8px solid transparent;
-  border-top: 8px solid var(--gray-900);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-  z-index: 100;
+    content: attr(title);
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%) scale(0.9);
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.95) 0%, rgba(37, 99, 235, 0.95) 100%);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: white;
+    padding: 0.75rem 1.25rem;
+    border-radius: var(--radius-md);
+    font-size: 0.875rem;
+    font-weight: 600;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 100;
+    box-shadow: 0 8px 24px rgba(59, 130, 246, 0.4);
 }
 
 .module-card.locked:hover::after {
-  opacity: 0.95;
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+    top: -60px;
 }
 
-/* Unlocked State (default) */
+/* ═══════════════════════════════════════════════════════════ */
+/*   COMPLETED STATE                                             */
+/* ═══════════════════════════════════════════════════════════ */
+
+.module-card.completed {
+    border-color: rgba(16, 185, 129, 0.4);
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.05) 0%, rgba(255, 255, 255, 0.05) 100%);
+    position: relative;
+}
+
+.module-card.completed::before {
+    background: linear-gradient(135deg, var(--success), var(--success-light), var(--accent-cyan));
+}
+
+.module-card.completed:hover {
+    border-color: var(--success);
+    box-shadow: var(--shadow-green-md), 0 0 40px rgba(16, 185, 129, 0.3);
+}
+
+/* Completion Badge - Top Right Corner */
+.completion-badge {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 56px;
+    height: 56px;
+    background: linear-gradient(135deg, var(--success) 0%, var(--success-light) 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 24px rgba(16, 185, 129, 0.5), 0 0 32px rgba(16, 185, 129, 0.3);
+    z-index: 10;
+    animation: badgePop 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    border: 3px solid rgba(255, 255, 255, 0.2);
+}
+
+@keyframes badgePop {
+    0% {
+        transform: scale(0) rotate(-180deg);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.1) rotate(10deg);
+    }
+    100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+    }
+}
+
+.checkmark {
+    color: white;
+    font-size: 2rem;
+    font-weight: 900;
+    line-height: 1;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Subtle pulse animation for completed badge */
+.completion-badge::after {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--success), var(--success-light));
+    z-index: -1;
+    opacity: 0;
+    animation: badgeGlow 2s ease-in-out infinite;
+}
+
+@keyframes badgeGlow {
+    0%, 100% {
+        opacity: 0;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.3;
+        transform: scale(1.2);
+    }
+}
+
+/* Review Button Styling */
+.module-card.completed button.review-button {
+    background: linear-gradient(135deg, var(--success) 0%, #0D9488 100%);
+    box-shadow: var(--shadow-green-sm);
+}
+
+.module-card.completed button.review-button:hover {
+    box-shadow: var(--shadow-green-md);
+    transform: translateY(-2px);
+}
+
+.module-card.completed button.review-button:active {
+    transform: translateY(0);
+}
+
+/* ═══════════════════════════════════════════════════════════ */
+/*   UNLOCKED STATE (Default - No specific class needed)        */
+/* ═══════════════════════════════════════════════════════════ */
+
 .module-card:not(.locked):not(.completed) {
-  border-color: var(--gray-100);
+    border-color: var(--glass-border);
 }
 
 .module-card:not(.locked):not(.completed):hover {
-  border-color: var(--primary-blue);
+    border-color: var(--primary-blue);
 }
 
-/* Smooth transitions */
+/* ═══════════════════════════════════════════════════════════ */
+/*   BUTTON STATES                                               */
+/* ═══════════════════════════════════════════════════════════ */
+
+.module-card button:disabled {
+    background: var(--glass-white) !important;
+    color: var(--text-tertiary) !important;
+    cursor: not-allowed !important;
+    box-shadow: none !important;
+    opacity: 0.4 !important;
+}
+
+.module-card button:disabled::before {
+    display: none;
+}
+
+.module-card button:disabled:hover {
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+.module-card button:disabled:active {
+    transform: none !important;
+}
+
+/* ═══════════════════════════════════════════════════════════ */
+/*   SMOOTH TRANSITIONS                                          */
+/* ═══════════════════════════════════════════════════════════ */
+
 .module-card {
-  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .module-card .module-icon {
-  transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 .module-card button {
-  transition: all 0.2s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Responsive adjustments */
+/* ═══════════════════════════════════════════════════════════ */
+/*   RESPONSIVE ADJUSTMENTS                                      */
+/* ═══════════════════════════════════════════════════════════ */
+
 @media (max-width: 768px) {
-  .completion-badge {
-    width: 40px;
-    height: 40px;
-    top: -6px;
-    right: -6px;
-  }
+    .completion-badge {
+        width: 48px;
+        height: 48px;
+        top: -8px;
+        right: -8px;
+    }
 
-  .checkmark {
-    font-size: 1.5em;
-  }
+    .checkmark {
+        font-size: 1.6rem;
+    }
 
-  .lock-icon {
-    font-size: 3em;
-  }
+    .lock-icon {
+        font-size: 3.5rem;
+    }
 
-  .module-card.locked::before {
-    display: none; /* Hide tooltip on mobile */
-  }
+    /* Hide tooltip on mobile */
+    .module-card.locked::after {
+        display: none !important;
+    }
+}
 
-  .module-card.locked::after {
-    display: none;
-  }
+@media (max-width: 480px) {
+    .completion-badge {
+        width: 44px;
+        height: 44px;
+        top: -6px;
+        right: -6px;
+    }
+
+    .checkmark {
+        font-size: 1.4rem;
+    }
+
+    .lock-icon {
+        font-size: 3rem;
+    }
+}
+
+/* ═══════════════════════════════════════════════════════════ */
+/*   ACCESSIBILITY                                               */
+/* ═══════════════════════════════════════════════════════════ */
+
+/* Ensure locked cards are clearly indicated for screen readers */
+.module-card.locked[aria-disabled="true"] {
+    cursor: not-allowed;
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .completion-badge,
+    .lock-icon {
+        animation: none !important;
+    }
 }
