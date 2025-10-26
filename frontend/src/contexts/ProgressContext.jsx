@@ -75,7 +75,7 @@ export function ProgressProvider({ children }) {
           setCompletedLessons([]);
           setProgressData({});
         }
-        setError('Could not load progress from server. Showing cached data.');
+        // Don't show error - user may just be starting fresh
       }
     } catch (err) {
       console.error('Error fetching progress:', err);
@@ -85,7 +85,7 @@ export function ProgressProvider({ children }) {
         setCompletedLessons([]);
         setProgressData({});
       }
-      setError('Could not load progress from server. Showing offline data.');
+      // Don't show error - progress system works offline
     } finally {
       setLoading(false);
     }

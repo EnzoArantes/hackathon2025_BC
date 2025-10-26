@@ -288,8 +288,24 @@
   letter-spacing: 2px;
 }
 
-.certification-text {
+.certification-recipient {
+  font-size: 1.3em;
+  color: var(--gray-800);
+  margin: 16px 0;
+  line-height: 1.4;
+  font-weight: 400;
+}
+
+.certification-recipient strong {
   font-size: 1.1em;
+  color: #d97706;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.certification-text {
+  font-size: 1.0em;
   color: var(--gray-700);
   margin: 12px 0;
   line-height: 1.6;
