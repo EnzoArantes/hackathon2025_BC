@@ -597,6 +597,11 @@
     font-size: 1.5rem;
     color: var(--text-primary);
     font-weight: 800;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.4;
+    word-spacing: 0.05em;
+    white-space: normal;
 }
 
 .summary-box {
@@ -1163,6 +1168,11 @@
     .vs-divider::before,
     .vs-divider::after {
         width: 25%;
+    }
+
+    .completion-badge p {
+        font-size: 1.25rem;
+        padding: 0 1rem;
     }
 }
 
