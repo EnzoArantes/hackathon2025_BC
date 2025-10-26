@@ -9,6 +9,8 @@ export function ProgressProvider({ children }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [totalLessons] = useState(4);
+  const [certificationEarned, setCertificationEarned] = useState(false);
+  const [certificationDate, setCertificationDate] = useState(null);
 
   // Load progress from sessionStorage
   const loadFromSessionStorage = () => {
@@ -18,6 +20,8 @@ export function ProgressProvider({ children }) {
         const data = JSON.parse(cached);
         setCompletedLessons(data.completedLessons || []);
         setProgressData(data.progressData || {});
+        setCertificationEarned(data.certificationEarned || false);
+        setCertificationDate(data.certificationDate || null);
         return true;
       }
     } catch (err) {
@@ -27,11 +31,13 @@ export function ProgressProvider({ children }) {
   };
 
   // Save progress to sessionStorage
-  const saveToSessionStorage = (completed, data) => {
+  const saveToSessionStorage = (completed, data, certification = false, certDate = null) => {
     try {
       sessionStorage.setItem('lessonProgress', JSON.stringify({
         completedLessons: completed,
         progressData: data,
+        certificationEarned: certification,
+        certificationDate: certDate,
         lastUpdated: new Date().toISOString()
       }));
     } catch (err) {
@@ -47,15 +53,22 @@ export function ProgressProvider({ children }) {
     try {
       const data = await getUserProgress();
 
-      if (data) {
+      // Check if data is a valid response object (not null/undefined)
+      if (data && typeof data === 'object') {
         const completed = data.completed_lessons || [];
         const progress = data.progress || {};
+        const certified = data.certification_earned || false;
+        const certDate = data.certification_date || null;
 
         setCompletedLessons(completed);
         setProgressData(progress);
-        saveToSessionStorage(completed, progress);
+        setCertificationEarned(certified);
+        setCertificationDate(certDate);
+        saveToSessionStorage(completed, progress, certified, certDate);
+        // Clear any previous errors on successful load
+        setError(null);
       } else {
-        // If backend fails, try to load from sessionStorage
+        // If backend returns null/undefined, try to load from sessionStorage
         const hasCache = loadFromSessionStorage();
         if (!hasCache) {
           // No cache, set defaults (only Lesson 1 unlocked)
@@ -98,7 +111,7 @@ export function ProgressProvider({ children }) {
 
     setCompletedLessons(newCompleted);
     setProgressData(newProgressData);
-    saveToSessionStorage(newCompleted, newProgressData);
+    saveToSessionStorage(newCompleted, newProgressData, certificationEarned, certificationDate);
 
     // Sync with backend
     try {
@@ -157,6 +170,8 @@ export function ProgressProvider({ children }) {
     loading,
     error,
     totalLessons,
+    certificationEarned,
+    certificationDate,
     fetchProgress,
     markLessonComplete,
     isLessonUnlocked,

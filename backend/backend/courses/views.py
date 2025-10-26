@@ -5,6 +5,7 @@ from rest_framework import status
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_exempt
+from django.utils import timezone
 from .models import UserProgress
 
 @csrf_exempt
@@ -42,15 +43,81 @@ def login_user(request):
         return Response({'error': 'Invalid credentials'}, status=401)
 
 @csrf_exempt
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def get_progress(request):
+    """Get user's lesson progress"""
+    try:
+        progress = UserProgress.objects.get(user=request.user)
+        completed_lessons = progress.get_completed_lessons()
+        progress_data = progress.get_progress_data()
+
+        return Response({
+            'completed_lessons': completed_lessons,
+            'progress': progress_data,
+            'total_lessons': progress.lessons_completed,
+            'total_score': progress.total_score,
+            'certification_earned': progress.certification_earned,
+            'certification_date': progress.certification_date
+        })
+    except UserProgress.DoesNotExist:
+        # Create new progress if it doesn't exist
+        progress = UserProgress.objects.create(user=request.user)
+        return Response({
+            'completed_lessons': [],
+            'progress': {},
+            'total_lessons': 0,
+            'total_score': 0,
+            'certification_earned': False,
+            'certification_date': None
+        })
+
+@csrf_exempt
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def update_progress(request):
     lesson_id = request.data.get('lesson_id')
     score = request.data.get('score', 0)
-    
-    progress = UserProgress.objects.get(user=request.user)
-    progress.lessons_completed += 1
+
+    try:
+        progress = UserProgress.objects.get(user=request.user)
+    except UserProgress.DoesNotExist:
+        progress = UserProgress.objects.create(user=request.user)
+
+    # Get current completed lessons and progress data
+    completed_lessons = progress.get_completed_lessons()
+    progress_data = progress.get_progress_data()
+
+    # Add lesson to completed list if not already there
+    if lesson_id not in completed_lessons:
+        completed_lessons.append(lesson_id)
+        completed_lessons.sort()
+        progress.lessons_completed += 1
+
+    # Update progress data for this lesson
+    progress_data[str(lesson_id)] = {
+        'score': score,
+        'completed': True,
+        'completed_at': timezone.now().isoformat()
+    }
+
+    # Update total score
     progress.total_score += score
+
+    # Save updated data
+    progress.set_completed_lessons(completed_lessons)
+    progress.set_progress_data(progress_data)
+
+    # Check if all 4 lessons are completed and award certification
+    TOTAL_LESSONS = 4
+    if len(completed_lessons) >= TOTAL_LESSONS and not progress.certification_earned:
+        progress.certification_earned = True
+        progress.certification_date = timezone.now()
+
     progress.save()
-    
-    return Response({'message': 'Progress updated'})
+
+    return Response({
+        'message': 'Progress updated',
+        'certification_earned': progress.certification_earned,
+        'all_lessons_completed': len(completed_lessons) >= TOTAL_LESSONS
+    })

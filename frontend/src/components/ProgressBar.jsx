@@ -3,7 +3,15 @@ import { useProgress } from '../contexts/ProgressContext';
 import '../styles/progress.css';
 
 function ProgressBar() {
-  const { completedLessons, totalLessons, getProgressPercentage, loading, error } = useProgress();
+  const {
+    completedLessons,
+    totalLessons,
+    getProgressPercentage,
+    loading,
+    error,
+    certificationEarned,
+    certificationDate
+  } = useProgress();
   const [displayPercentage, setDisplayPercentage] = useState(0);
   const [showCelebration, setShowCelebration] = useState(false);
 
@@ -89,6 +97,34 @@ function ProgressBar() {
           </>
         )}
       </div>
+
+      {certificationEarned && (
+        <div className="certification-badge">
+          <div className="certification-content">
+            <div className="certification-icon">🏆</div>
+            <h4>AI Literacy Certification</h4>
+            <p className="certification-text">
+              This certifies that you have successfully completed all lessons in the AI Literacy Course
+            </p>
+            {certificationDate && (
+              <p className="certification-date">
+                Earned on {new Date(certificationDate).toLocaleDateString('en-US', {
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric'
+                })}
+              </p>
+            )}
+            <div className="certification-seal">
+              <div className="seal-outer">
+                <div className="seal-inner">
+                  <span className="seal-text">CERTIFIED</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {showCelebration && (
         <div className="confetti-container">
