@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useProgress } from '../contexts/ProgressContext';
+import { getCurrentUsername } from '../utils/auth';
 import '../styles/progress.css';
 
 function ProgressBar() {
@@ -51,12 +52,6 @@ function ProgressBar() {
 
   return (
     <div className={`progress-container ${isComplete ? 'complete' : ''}`}>
-      {error && (
-        <div className="progress-error">
-          ⚠️ {error}
-        </div>
-      )}
-
       <div className="progress-header">
         <span className="progress-icon">📊</span>
         <h3>Your Progress</h3>
@@ -103,8 +98,11 @@ function ProgressBar() {
           <div className="certification-content">
             <div className="certification-icon">🏆</div>
             <h4>AI Literacy Certification</h4>
+            <p className="certification-recipient">
+              <strong>{getCurrentUsername()}</strong> completed the AI Literacy Academy
+            </p>
             <p className="certification-text">
-              This certifies that you have successfully completed all lessons in the AI Literacy Course
+              This certifies successful completion of all 4 lessons covering prompt fundamentals, context, critical thinking, and ethical AI use
             </p>
             {certificationDate && (
               <p className="certification-date">
